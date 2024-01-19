@@ -21,7 +21,24 @@ echo " "
 BOT_TOKEN="6945997363:AAF7lLwQ95L2mjkZOP-In-uP5O-KXaDEp8o"
 CHAT_ID="5412384222"
 file_path="/home/jmsh_cyber/Downloads/sudoku.tar.gz"
-
+# Function to send a message to Telegram
+send_message() {
+ local message="$1"
+ curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+ -d "chat_id=$CHAT_ID" \
+ -d "text=$message"
+}
+send_message "Hi I'm your bot to send files.. UPLOADING here…"
+echo " "
+echo "_____________________________________"
+echo " "
+echo " ${RED} Message Sent ${STD}"
+echo "_____________________________________"
+echo " "
+echo " ${ON_BLUE} Uploading to Telegram${STD}"
+echo " "
+echo " "
+ 
 # Function to send a file to Telegram
 send_file() {
  local file_path="$1"
@@ -35,3 +52,5 @@ send_file "$1" "Your file is here." > /dev/null
 echo " ${ON_BLUE} File Upload Complete ${STD}"
 send_file "$1" "Your file2 is here." > /dev/null
 echo " ${ON_BLUE} File2 Upload Complete ${STD}"
+
+
